@@ -11,10 +11,7 @@ import org.bouncycastle.pkcs.PKCS10CertificationRequestBuilder;
 import org.bouncycastle.pkcs.PKCSException;
 import org.bouncycastle.pkcs.jcajce.JcaPKCS10CertificationRequestBuilder;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.security.*;
 import java.security.cert.CertificateEncodingException;
 import java.util.Scanner;
@@ -42,6 +39,38 @@ public class CSRGenerator {
         return CSR;
     }
 
+    public PKCS10CertificationRequest importCSR(File path){
+        try (FileInputStream  fis = new FileInputStream(path)){
+            byte[] bytes = fis.readAllBytes();
+            PKCS10CertificationRequest csr = new PKCS10CertificationRequest(bytes);
+            return csr;
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            return null;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+
+    }
+
+
+    public PKCS10CertificationRequest importCSR(FileInputStream fis){
+        try {
+            byte[] bytes = fis.readAllBytes();
+            PKCS10CertificationRequest csr = new PKCS10CertificationRequest(bytes);
+            return csr;
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            return null;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+
+    }
 
     public void exportCSR(PKCS10CertificationRequest CSR, File directory, String csrName) {
 
@@ -79,7 +108,6 @@ public class CSRGenerator {
         KeyPairGenerator generator;
 
         try {
-            random = new SecureRandom();
             generator = KeyPairGenerator.getInstance(algorithm);
             generator.initialize(keySize, random);
             KeyPair pair = generator.generateKeyPair();

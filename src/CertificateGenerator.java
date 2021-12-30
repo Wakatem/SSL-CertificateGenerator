@@ -39,11 +39,11 @@ public class CertificateGenerator {
 
 
     //self-signed generated certificate
-    public X509Certificate generateSelfSignedCert(String keyAlgorithm, String signatureAlgorithm, SecureRandom random, int validityDuration) {
+    public X509Certificate generateSelfSignedCert(String keyAlgorithm, int keySize, SecureRandom random, String signatureAlgorithm, int validityDuration) {
 
         //generate CSR
         CSRGenerator csrGenerator = new CSRGenerator();
-        PKCS10CertificationRequest CSR = csrGenerator.generateCSR(keyAlgorithm, 2048, random, signatureAlgorithm);
+        PKCS10CertificationRequest CSR = csrGenerator.generateCSR(keyAlgorithm, keySize, random, signatureAlgorithm);
 
 
         //setup certificate builder
@@ -62,7 +62,7 @@ public class CertificateGenerator {
         //create and sign certificate
         try {
             FileInputStream fis = new FileInputStream("privatekey.key");
-            ;
+
             PrivateKey privateKey = KeyFactory.getInstance(keyAlgorithm).generatePrivate(new PKCS8EncodedKeySpec(fis.readAllBytes()));
 
             signer = signerBuilder.build(privateKey);
