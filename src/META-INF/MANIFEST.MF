@@ -1,0 +1,5 @@
+Manifest-Version: 1.0
+Main-Class: Main
+Class-Path: libs/bcpkix-jdk15to18-170.jar libs/bcprov-jdk15to18-170.jar libs/bcutil-jdk
+ 15to18-170.jar
+

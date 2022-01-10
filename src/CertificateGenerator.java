@@ -1,24 +1,15 @@
 
-import org.bouncycastle.asn1.ASN1Set;
-import org.bouncycastle.asn1.pkcs.CertificationRequest;
-import org.bouncycastle.asn1.pkcs.CertificationRequestInfo;
+
 import org.bouncycastle.asn1.x500.X500Name;
-import org.bouncycastle.asn1.x500.X500NameBuilder;
-import org.bouncycastle.asn1.x500.style.BCStyle;
 import org.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
 import org.bouncycastle.cert.X509CertificateHolder;
 import org.bouncycastle.cert.X509v3CertificateBuilder;
 import org.bouncycastle.cert.jcajce.JcaX509CertificateConverter;
-import org.bouncycastle.cert.jcajce.JcaX509v3CertificateBuilder;
-import org.bouncycastle.crypto.util.PrivateKeyFactory;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.bouncycastle.operator.ContentSigner;
 import org.bouncycastle.operator.OperatorCreationException;
 import org.bouncycastle.operator.jcajce.JcaContentSignerBuilder;
 import org.bouncycastle.pkcs.PKCS10CertificationRequest;
-import org.bouncycastle.pkcs.PKCS10CertificationRequestBuilder;
-import org.bouncycastle.pkcs.jcajce.JcaPKCS10CertificationRequest;
-
 import java.io.*;
 import java.math.BigInteger;
 import java.security.*;
@@ -28,7 +19,6 @@ import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
 import java.security.spec.InvalidKeySpecException;
 import java.security.spec.PKCS8EncodedKeySpec;
-import java.security.spec.X509EncodedKeySpec;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
@@ -134,7 +124,7 @@ public class CertificateGenerator {
     }
 
 
-    public boolean CertificateIsVerified(Certificate certificate, PublicKey publicKey) {
+    public boolean CertificateIsVerified(X509Certificate certificate, PublicKey publicKey) {
 
         boolean verified = false;
 

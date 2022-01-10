@@ -13,7 +13,6 @@ import org.bouncycastle.pkcs.jcajce.JcaPKCS10CertificationRequestBuilder;
 
 import java.io.*;
 import java.security.*;
-import java.security.cert.CertificateEncodingException;
 import java.util.Scanner;
 
 public class CSRGenerator {

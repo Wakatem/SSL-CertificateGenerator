@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact name="SSLCertificateGenerator:jar">
+    <output-path>$PROJECT_DIR$/exported</output-path>
+    <root id="root">
+      <element id="archive" name="SSLCertificateGenerator.jar">
+        <element id="module-output" name="SSLCertificateGenerator" />
+      </element>
+      <element id="directory" name="libs">
+        <element id="library" level="project" name="libraries" />
+      </element>
+    </root>
+  </artifact>
+</component>
